@@ -4,7 +4,7 @@ import dbClient from '../utils/db';
 class AppController {
   static getStatus(req, res) {
     if (redisClient.isAlive && dbClient.isAlive) {
-      res.status(200).json({ "redis": true, "db": true });
+      res.status(200).json({ redis: true, db: true });
     }
   }
 
@@ -12,7 +12,7 @@ class AppController {
     const users = await dbClient.nbUsers();
     const files = await dbClient.nbFiles();
 
-    res.status(200).json({ "users": users, "files": files });
+    res.status(200).json({ users, files });
   }
 }
 module.exports = AppController;
